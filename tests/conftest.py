@@ -1,6 +1,6 @@
 import pytest
-from sqlalchemy import create_engine
 from fastapi.testclient import TestClient
+from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 
 from fast_zero.app import app
@@ -21,5 +21,3 @@ def session():
         yield session
 
     table_registry.metadata.drop_all(engine)
-
-

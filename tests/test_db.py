@@ -2,6 +2,7 @@ from sqlalchemy import create_engine, select
 
 from fast_zero.models import User
 
+
 def test_create_user():
     engine = create_engine(session)
 
@@ -9,16 +10,16 @@ def test_create_user():
 
     with Session(engine) as session:
         user = User(
-            username='dunossauro', 
+            username='dunossauro',
             email='duno@ssauro.com',
             password='minha_senha-legal'
         )
 
         session.add(user)
         session.commit()
-        
+
         session.scalar(
             select(User).where(User.email == 'duno@ssauro.com')
         )
-    
+
     assert result.username == 'dunossauro'
